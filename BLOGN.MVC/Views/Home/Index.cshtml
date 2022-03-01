@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BLOGN.Models.Category>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" asp-action="Save">
+
+    <div class="row">
+        <label>Name</label>
+        <input type="text" class="form-control" name="Name" id="Name" value="@ViewBag.Name" />
+    </div>
+    <div class="row my-2">
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary">
+                Save
+            </button>
+        </div>
+        <div class="col-6"><a asp-controller="Category" asp-action="Index" class="btn btn-primary"> Back To Main  </a></div>
+
+    </div>
+
+    <table>
+        <tr>
+            <td style="vertical-align:top">
+
+                <table class="table table-striped" id="table_data">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th></th>
+
+                    </tr>
+                    @{
+                        foreach (var i in Model)
+                        {
+                            <tr>
+                                <td>@i.Id</td>
+                                <td>@i.Name</td>
+                                <td>     
+                                    <a asp-controller="Home" asp-action="DeleteData"  asp-route-id="@i.Id"  class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">
+                                        Delete
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <br>
+
+                <input type="submit" class="btn btn-info w-180" value="SAVE" />
+
+</form>
