@@ -2,6 +2,7 @@
 using BLOGN.Data.Services.IService;
 using BLOGN.Models;
 using BLOGN.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace BLOGN.API.Controllers
      [Route("api/v1/Article")]
      //[Route("api/[controller]")]
      [ApiController]
+     [Authorize]
      public class ArticleController : ControllerBase
      {
           private readonly IArticleService _categoryService;
